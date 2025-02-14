@@ -48,8 +48,6 @@ class BaidupanUpload:
     def __init__(self):
         chrome_options = Options()
         # 设置无头模式
-        chrome_options.add_argument("--headless")
-        chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")  # 解决资源限制问题
 
         # 连接到 Selenium 服务
