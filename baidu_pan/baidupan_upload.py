@@ -236,4 +236,5 @@ if __name__ == '__main__':
     popup_thread = threading.Thread(target=bd.check_and_close_popups)
     popup_thread.daemon = True
     popup_thread.start()
+    time.sleep(10)
     bd.get_share_from_baidupan()
