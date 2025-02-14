@@ -147,9 +147,7 @@ class BaidupanUpload:
         videos = self.db.fetchall(
             "SELECT id, file_name FROM cj_data_by_hct WHERE upload_status = 1 AND share_url IS NULL"
         )
-        time.sleep(3)
-        self.browser.refresh()
-        time.sleep(3)
+
         for video in videos:
             search_input = self.browser.find_element(By.XPATH,
                                                      '//input[@type="text" and @placeholder="搜索我的文件" and @class="u-input__inner"]')
@@ -165,7 +163,8 @@ class BaidupanUpload:
                 print('删除未上传')
                 continue
             elif len(trs) > 1:
-                trs[0].click()
+                print('选中搜索结果')
+                self.browser.execute_script("arguments[0].click();", trs[0])
             else:
                 self.browser.find_element(By.XPATH,
                                           '/html/body/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[2]/div[1]/div[2]/div/div/div/div[1]/table/thead/tr/th[1]/label').click()
@@ -174,6 +173,7 @@ class BaidupanUpload:
                                                        '/html/body/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[1]/div/div[1]/div/div/div[1]/div/div/button')
             for button in share_buttons:
                 if '分享' == button.text:
+                    print('点击分享')
                     button.click()
             time.sleep(1)
             wait = WebDriverWait(self.browser, 10)
