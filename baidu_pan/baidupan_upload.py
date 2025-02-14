@@ -119,8 +119,8 @@ class BaidupanUpload:
             trs = self.browser.find_elements(By.XPATH,
                                              '/html/body/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[2]/div[1]/div[2]/div/div/div/div[2]/table/tbody/tr')
             if len(trs) == 0:
-                self.db.execute("DELETE FROM baidu_pan_upload WHERE id = %s", (video[0],))
-                print('删除未上传文件。', flush=True)
+                #self.db.execute("DELETE FROM baidu_pan_upload WHERE id = %s", (video[0],))
+                print('搜索结果为0。', flush=True)
                 continue
             elif len(trs) > 1:
                 trs[0].click()
@@ -169,8 +169,8 @@ class BaidupanUpload:
             trs = self.browser.find_elements(By.XPATH,
                                              '/html/body/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[2]/div[1]/div[2]/div/div/div/div[2]/table/tbody/tr')
             if len(trs) == 0:
-                self.db.execute("DELETE FROM cj_data_by_hct WHERE id = %s", (video[0],))
-                print('删除未上传文件。', flush=True)
+                #self.db.execute("DELETE FROM cj_data_by_hct WHERE id = %s", (video[0],))
+                print('搜索结果为0。', flush=True)
                 continue
             elif len(trs) == 1:
                 print('选中单个搜索结果。', flush=True)
