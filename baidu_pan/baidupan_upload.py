@@ -147,6 +147,9 @@ class BaidupanUpload:
         videos = self.db.fetchall(
             "SELECT id, file_name FROM cj_data_by_hct WHERE upload_status = 1 AND share_url IS NULL"
         )
+        time.sleep(3)
+        self.browser.refresh()
+        time.sleep(3)
         for video in videos:
             search_input = self.browser.find_element(By.XPATH,
                                                      '//input[@type="text" and @placeholder="搜索我的文件" and @class="u-input__inner"]')
@@ -236,5 +239,4 @@ if __name__ == '__main__':
     popup_thread = threading.Thread(target=bd.check_and_close_popups)
     popup_thread.daemon = True
     popup_thread.start()
-    time.sleep(10)
     bd.get_share_from_baidupan()
