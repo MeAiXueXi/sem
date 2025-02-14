@@ -226,6 +226,7 @@ class BaidupanUpload:
                     print(f'分享成功 ===== {video[1]} {share_url} =====', flush=True)
             except NoSuchElementException as E:
                 print(E, '等待分享页面失败', flush=True)
+                self.get_share_from_baidupan()
                 return None, None
         print('分享链接获取完成。', flush=True)
 
