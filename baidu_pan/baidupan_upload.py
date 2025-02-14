@@ -162,10 +162,11 @@ class BaidupanUpload:
                 self.db.execute("DELETE FROM cj_data_by_hct WHERE id = %s", (video[0],))
                 print('删除未上传')
                 continue
-            elif len(trs) > 1:
-                print('选中搜索结果')
-                self.browser.execute_script("arguments[0].click();", trs[0])
+            # elif len(trs) > 1:
+            #     print('选中搜索结果')
+            #     self.browser.execute_script("arguments[0].click();", trs[0])
             else:
+                print('选中搜索结果')
                 self.browser.find_element(By.XPATH,
                                           '/html/body/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[2]/div[1]/div[2]/div/div/div/div[1]/table/thead/tr/th[1]/label').click()
             time.sleep(0.3)
