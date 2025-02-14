@@ -195,14 +195,21 @@ class BaidupanUpload:
                                          '//*[@id="pane-link"]/div/div[1]/div/form/div[1]/div/div/div/label[5]').click()
                 time.sleep(1)
                 self.browser.find_element(By.XPATH, '//*[@id="pane-link"]/div/div[1]/div/div[3]/button').click()
+                wait_max_count = 10
                 while True:
                     try:
                         self.browser.find_element(By.XPATH,
                                                   '//*[@id="pane-link"]/div/div[1]/div[1]/div[2]/div[1]/input').get_attribute(
                             'value')
+                        print('等待分享链接', flush=True)
                         break
                     except:
+                        wait_max_count -= 1
+                        if wait_max_count <= 0:
+                            break
                         continue
+                if wait_max_count <= 0:
+                    continue
                 share_url = self.browser.find_element(By.XPATH,
                                                       '//*[@id="pane-link"]/div/div[1]/div[1]/div[2]/div[1]/input').get_attribute(
                     'value')
