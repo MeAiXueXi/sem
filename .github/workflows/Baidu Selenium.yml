@@ -35,4 +35,4 @@ jobs:
         SQLPWD: ${{ secrets.SQLPWD }}
         SQLDATABASE: ${{ secrets.SQLDATABASE }}
       run: |
-        python baidu_pan/baidupan_upload.py  "$SQLIP" "$SQLUSER" "$SQLPWD" "$SQLDATABASE"
+        python -u baidu_pan/baidupan_upload.py  "$SQLIP" "$SQLUSER" "$SQLPWD" "$SQLDATABASE"
