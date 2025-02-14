@@ -54,7 +54,7 @@ class BaidupanUpload:
 
         # 连接到 Selenium 服务
         self.browser = webdriver.Remote(
-            command_executor='http://selenium:4445/wd/hub',
+            command_executor='http://127.0.0.1:4444/wd/hub',
             options=chrome_options
         )
         self.db = Database()  # Initialize the database connection
