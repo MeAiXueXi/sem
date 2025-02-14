@@ -207,8 +207,16 @@ class BaidupanUpload:
                         wait_max_count -= 1
                         if wait_max_count <= 0:
                             break
+                        time.sleep(1)
                         continue
                 if wait_max_count <= 0:
+                    try:
+                        self.browser.find_element(By.XPATH,
+                                                  '/html/body/div[1]/div[4]/div/div/div/div/div[1]/button').click()
+                    except NoSuchElementException:
+                        self.browser.find_element(By.XPATH,
+                                                  '/html/body/div[1]/div[3]/div/div/div/div/div[1]/button').click()
+                    time.sleep(1)
                     continue
                 share_url = self.browser.find_element(By.XPATH,
                                                       '//*[@id="pane-link"]/div/div[1]/div[1]/div[2]/div[1]/input').get_attribute(
